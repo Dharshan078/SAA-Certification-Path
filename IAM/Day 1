@@ -1,0 +1,46 @@
+Day 1: 8-9
+
+IAM - Identity and Access Management [Overview]
+Its used to create users and groups to allow use our AWS account resources
+Each users can be assigned to a group. But Each groups cant be assigned to other groups.
+A user can be assigned to multiple group.
+IAM is a globale service [missed]
+IAM Permissions
+Each user can be given to the least permissions they needed using the policies.
+Example if a user just want to describe instances, list s3 buckets and view cloudwatch logs we can just assign that permissions
+Assigning each user to a group is a best practice
+These policies are in JSON format
+These policies define the permissions of the users [missed]
+
+
+IAM Policies Inheritance
+A policy can be assigned directly to a user using inline policies
+A policy can be assigned to a group and the group can be assigned to a user
+Multiple policy can be assigned to multiple group based on requirements and multiple groups can be assigned to a single user
+
+IAM Policy structure
+Version - used to mention the version of the policy
+Id - an identifier for the policy (optional)
+Statement - Where sid, effect, action, principal and resource takes place
+	sid - an identifier for statement (optional)
+	effect - used to mention is the actions are allowed or denied
+	action - the actions such as describe ec2 instances
+	principal - specifies the aws identities (user, account or role) this policy appied for | mostly principal is not used for identity based policy its mostly used for resource based policy
+	resource - which resource this statement applied for 
+
+IAM Password Policy / MFA
+A user need to set stronger password
+We can enforce a user to set password with 
+	certain character length
+	consists of non alphanumeric characters
+	consist of lower class or higher class letters
+	consists of numbers etc
+We can allow the user to reset password
+Enforce the user to change password after certain period etc
+MFA
+MFA is used as second step verification for example a user have a password, a security device (such as authenticator on mobile).
+If a user password is compromised the hacker still need to have access of the security device to generate MFA token
+We can enforce the user to use MFA
+
+
+
