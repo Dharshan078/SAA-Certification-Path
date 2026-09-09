@@ -42,5 +42,19 @@ MFA is used as second step verification for example a user have a password, a se
 If a user password is compromised the hacker still need to have access of the security device to generate MFA token
 We can enforce the user to use MFA
 
+Day 2: 9-9
+
+IAM Roles
+
+Some AWS services needs to do actions on our behalf to do so we need to attach permissions to the services using IAM Roles.
+IAM Roles is like to give permissions for users but its intended to use for services.
+Example an EC2 instance may need to access AWS services like cloudformation for that we need to give proper IAM Permission roles to it.
+
+IAM Security Tools
+IAM Credential Report (Account level)	IAM Access Advisor (User level) - Renamed to Last Access
+It will generate the report about all accounts user status and of the various credentials	Access Advisor will generate report on user level the service permissions granted for users and when those last used
+
+
+
 
 
