@@ -26,21 +26,22 @@ Statement - Where sid, effect, action, principal and resource takes place
 	effect - used to mention is the actions are allowed or denied
 	action - the actions such as describe ec2 instances
 	principal - specifies the aws identities (user, account or role) this policy appied for | mostly principal is not used for identity based policy its mostly used for resource based policy
-	resource - which resource this statement applied for 
+	resource - which resource this statement applied for
 
 IAM Password Policy / MFA
 A user need to set stronger password
-We can enforce a user to set password with 
+We can enforce a user to set password with
 	certain character length
 	consists of non alphanumeric characters
 	consist of lower class or higher class letters
 	consists of numbers etc
 We can allow the user to reset password
-Enforce the user to change password after certain period etc
+Enforce the user to change password after certain period
 MFA
 MFA is used as second step verification for example a user have a password, a security device (such as authenticator on mobile).
 If a user password is compromised the hacker still need to have access of the security device to generate MFA token
 We can enforce the user to use MFA
+
 
 Day 2: 9-9
 
@@ -55,6 +56,45 @@ IAM Credential Report (Account level)	IAM Access Advisor (User level) - Renamed 
 It will generate the report about all accounts user status and of the various credentials	Access Advisor will generate report on user level the service permissions granted for users and when those last used
 
 
+Day 3: 10-9
 
+IAM Advanced
 
+AWS Organization
+AWS Organization is used to manage aws accounts centralized
+It has two accounts Management and Member account
+	Management account is used to manage every thing under an AWS Organization
+	Member account is inside the AWS Organization managed by organization which can be under an OU itself and each member can only be a part of on Organization
+Every accounts and OU is under Root OU
+The billing from every accounts can be consiladated in one single bill
+
+SCP [Service Control Policy]
+Service control policy is used to grant maximum level of permission to a OU it doesn't grant permission but guardrail what are the actions they can do
+To do a action they should also have the IAM Permission of that action
+Example:
+Production OU [SCP: Deny EC2]
+	Account A [IAM: Allow EC2]
+	Account B
+if the Account A tries to create an EC2 instance it cant be created as SCP Denied it, to create EC2 instance the account should have Allow EC2 and SCP should not deny that
+SCP policies not applicable for Management account
+
+Easy way to remember
+AWS Organizations = manages multiple AWS accounts
+OU = groups AWS accounts
+SCP = organizational ceiling/guardrail
+IAM = actually grants permissions
+
+AWS Organizations - Tag policies
+Helps to standardize tagged policies
+Tag policies is to standardize the name that applies on organization level that has key - value pair 
+owner - payment team 
+environment - production etc 
+by using the tag policies we can also check is every resources are compliant later it can also helps the organization on billing
+
+Advanced IAM Policies
+AWS Resource policies
+A resource-based policy is a policy attached directly to a resource that controls who can access that resource and what they can do.
+Example: resources like S3, EC2 etc to deny access to certain Regions, IP or MFA based access to Member accounts
+aws:PrincipalOrgID
+Its can be applied for any resource based policies to restrict access based on accounts that are member of an AWS organization
 
