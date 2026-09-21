@@ -111,7 +111,7 @@ For Example: User in account A needs to scan a DynamoDB table in Account A and d
 Here in Account A the user should have S3:put object IAM permission on Account A and in Account B a resource based policy should allow Account A to put object in the bucket. It mostly used in cross account
 
 IAM Permission Boundaries
-IAM Permission Boundaries is used to restrict the access even tough they have the permission to do certain actions through IAM Policy 
+IAM Permission Boundaries is used to restrict the access even tough they have the permission to do certain actions through IAM Policy
 For example if a user have full administrator access and the permission boundary has set only to allow S3 actions
 even tough the user has full administrator access they can only use S3 actions
 
@@ -125,3 +125,32 @@ What it does in browser AWS Identity center login page will allow the resource t
 AWS Identity Fine grained Assessment and Permissions
 Its a collection of one or more policies(Permission sets) attached to a user or groups as a role to define permission access
 
+Day 5: 21-09
+
+AWS Managed Directory Services
+The Active Directory is a Database used to store and manage objects such as User accounts, Computers, Printers etc.
+Its managed in On-premise server.
+The objects are grouped as tree and the tree are grouped under Domain
+
+In AWS AD can be managed in three ways
+	AWS Managed Microsoft AD Services: 
+	Its hosted on AWS and can be connected to On-Premise server using two way relationship and the user can able to authenticate from AWS Managed Microsoft AD Services and On Premise server.
+	MFA can be enforced
+	AD Connector
+	AD Connector is used as proxy to connect with On-Premise AD Server where the request to AD Connector is routed to On-Premise server
+	MFA Can be enforced here too
+	AWS Simple AD
+	Its a simple AD using Linux Sambda on AWS to manage user accounts connected to IAM.
+
+AWS Control Center
+Its an easy way to setup and govern a secure and compliant system across multiple aws accounts using the best practices
+AWS Control center is used to create user account on AWS Organization
+
+Benefits
+Can detect policy violations using AWS Config and fix it
+Can prevent actions against non-compliant or permissions
+Monitor compliance using interactive dashboard
+
+Control Center - Guardrails
+Preventive Guardrails - Its used to prevent non-compliant actions and based on SCP (eg: restrict to create EC2)
+Detective Guardrails - Its used to detect non-compliant resources using AWS config (eg: to detect resourced that are not using Organization allowed tags) and send the detected things through SNS to the Management account etc
